@@ -121,9 +121,10 @@ body { margin: 0; padding: 0; }
         // description HTML from its properties.
         map.on('click', 'unclustered-point', (e) => {
             const coordinates = e.features[0].geometry.coordinates.slice();
-            const mag = e.features[0].properties.mag;
-            const tsunami =
-                e.features[0].properties.tsunami === 1 ? 'yes' : 'no';
+            const name = e.features[0].properties.name;
+            const email = e.features[0].properties.email;
+            const phone = e.features[0].properties.contactno1;
+           
 
             // Ensure that if the map is zoomed out such that
             // multiple copies of the feature are visible, the
@@ -135,7 +136,7 @@ body { margin: 0; padding: 0; }
             new mapboxgl.Popup()
                 .setLngLat(coordinates)
                 .setHTML(
-                    `magnitude: ${mag}<br>Was there a tsunami?: ${tsunami}`
+                    `Name: ${name}<br>Email: ${email}<br>Phone: ${phone}<br>`
                 )
                 .addTo(map);
         });
